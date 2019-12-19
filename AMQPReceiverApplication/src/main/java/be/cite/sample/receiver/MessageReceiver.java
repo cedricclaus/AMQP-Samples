@@ -20,9 +20,12 @@ public class MessageReceiver {
     }
 
     @RabbitListener(queues = AMQP_SAMPLES_MSG_QUEUE)
-    public void receive(MessageDTO msg) {
+    public void receive(MessageDTO msg) throws Exception {
         log.info("RECEIVED Message");
         log.info(msg.toString());
+        if(!msg.getGood()){
+            throw new Exception("Could not handle message");
+        }
     }
 
 }
