@@ -1,7 +1,6 @@
 package be.cite.sample.config;
 
 
-
 import be.cite.sample.domain.MessageDTO;
 import be.cite.sample.receiver.MessageReceiver;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -9,11 +8,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.amqp.core.*;
-import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.amqp.rabbit.listener.RabbitListenerContainerFactory;
-import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
 import org.springframework.amqp.support.converter.DefaultClassMapper;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
@@ -46,14 +42,14 @@ public class RabbitMQConfiguration {
         this.applicationProperties = applicationProperties;
     }
 
-    @Bean
-    public RabbitListenerContainerFactory<SimpleMessageListenerContainer> notRequeueRejected(ConnectionFactory rabbitConnectionFactory) {
-        SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
-        factory.setConnectionFactory(rabbitConnectionFactory);
-        factory.setDefaultRequeueRejected(false);
-        factory.setMessageConverter(new Jackson2JsonMessageConverter());
-        return factory;
-    }
+//    @Bean
+//    public RabbitListenerContainerFactory<SimpleMessageListenerContainer> notRequeueRejected(ConnectionFactory rabbitConnectionFactory) {
+//        SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
+//        factory.setConnectionFactory(rabbitConnectionFactory);
+//        factory.setDefaultRequeueRejected(false);
+//        factory.setMessageConverter(new Jackson2JsonMessageConverter());
+//        return factory;
+//    }
 
 
     @Bean
