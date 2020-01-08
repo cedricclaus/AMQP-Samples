@@ -149,6 +149,14 @@ spring:
           max-attempts: 5
           multiplier: 2
           initial-interval: 1000ms
+    addresses: amqp://faggvmimb1.yourict.net:5672,amqp://faggvmimb2.yourict.net:5672
+    adminAddresses: http://faggvmimb1.yourict.net:15672,http://faggvmimb2.yourict.net:15672
+    username: dev
+    password: dev
+    virtual_host: /
+    useSSL: false
+    channelCacheSize: 100
+
 
 server:
   servlet:
